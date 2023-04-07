@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "828822766357",
+    "project_id": "usocial-insta",
+    "storage_bucket": "usocial-insta.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:828822766357:android:53b23dd49eaee1b97b9f1c",
+        "android_client_info": {
+          "package_name": "com.example.usocial"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "828822766357-a16ka10hermp6lditc3c3cm5v1po1cob.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCwaNlqrcVWUmUbB6Xy4i0Ie8htgMTyecY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "828822766357-a16ka10hermp6lditc3c3cm5v1po1cob.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
