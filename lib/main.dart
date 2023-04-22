@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 // import 'package:usocial/layouts/mobile_screen_layout.dart';
 // import 'package:usocial/layouts/responsive_layout.dart';
 // import 'package:usocial/layouts/web_screen_layout.dart';
-import 'package:usocial/screens/login.dart';
+// import 'package:usocial/screens/login.dart';
 import 'package:usocial/screens/signup.dart';
 import 'package:usocial/utils/colors.dart';
 import 'package:usocial/firebase_options.dart';

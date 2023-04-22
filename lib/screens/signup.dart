@@ -1,7 +1,11 @@
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:usocial/resources/auth_methods.dart';
 import 'package:usocial/utils/colors.dart';
+import 'package:usocial/utils/imageUtils.dart';
 import 'package:usocial/widgets/textfield_input.dart';
 
 class Signup extends StatefulWidget {
@@ -16,6 +20,7 @@ class _SignupState extends State<Signup> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _phoneController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+  Uint8List? image;
 
   @override
   void dispose() {
@@ -24,6 +29,13 @@ class _SignupState extends State<Signup> {
     _passwordController.dispose();
     _phoneController.dispose();
     _usernameController.dispose();
+  }
+
+  void selectImage() async {
+    Uint8List selectedImage = await pickImage(ImageSource.gallery);
+    setState(() {
+      image = selectedImage;
+    });
   }
 
   @override
@@ -49,26 +61,31 @@ class _SignupState extends State<Signup> {
                       const SizedBox(
                         height: 44,
                       ),
-                      // Stack(
-                      //   children: [
-                      //     const CircleAvatar(
-                      //       radius: 50,
-                      //       backgroundImage: NetworkImage(
-                      //           'https://plus.unsplash.com/premium_photo-1666277012296-a2f0dd57f5fa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1469&q=80'),
-                      //     ),
-                      //     Positioned(
-                      //         bottom: -10,
-                      //         left: 60,
-                      //         child: IconButton(
-                      //           icon: const Icon(Icons.add_a_photo),
-                      //           color: blueColor,
-                      //           onPressed: () => {},
-                      //         )),
-                      //   ],
-                      // ),
-                      // const SizedBox(
-                      //   height: 24,
-                      // ),
+                      Stack(
+                        children: [
+                          image != null
+                              ? CircleAvatar(
+                                  radius: 50,
+                                  backgroundImage: MemoryImage(image!),
+                                )
+                              : const CircleAvatar(
+                                  radius: 50,
+                                  backgroundImage: NetworkImage(
+                                      'https://upload.wikimedia.org/wikipedia/commons/a/ac/Default_pfp.jpg'),
+                                ),
+                          Positioned(
+                              bottom: -10,
+                              left: 60,
+                              child: IconButton(
+                                icon: const Icon(Icons.add_a_photo),
+                                color: blueColor,
+                                onPressed: selectImage,
+                              )),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 24,
+                      ),
                       TextFieldInput(
                           textEditingController: _usernameController,
                           hintText: "Enter your username",
@@ -102,11 +119,11 @@ class _SignupState extends State<Signup> {
                       InkWell(
                         onTap: () async {
                           String res = await AuthMethods().signupUser(
-                            email: _emailController.text,
-                            password: _passwordController.text,
-                            phone: _phoneController.text,
-                            username: _usernameController.text,
-                          );
+                              email: _emailController.text,
+                              password: _passwordController.text,
+                              phone: _phoneController.text,
+                              username: _usernameController.text,
+                              file: image!);
                         },
                         child: Container(
                           width: double.infinity,
