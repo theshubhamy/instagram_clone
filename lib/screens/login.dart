@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:usocial/resources/auth_methods.dart';
 import 'package:usocial/utils/colors.dart';
+import 'package:usocial/utils/snackBar.dart';
 import 'package:usocial/widgets/textfield_input.dart';
 
 class Login extends StatefulWidget {
@@ -21,12 +23,20 @@ class _LoginState extends State<Login> {
     _passwordController.dispose();
   }
 
+  void loginUserHandler() async {
+    String res = await AuthMethods().loginUser(
+        email: _emailController.text, password: _passwordController.text);
+    if (res == 'success') {
+      showSnackBar(res, context);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         body: SafeArea(
             child: Container(
-                padding:  const EdgeInsets.all(32),
+                padding: const EdgeInsets.all(32),
                 width: double.infinity,
                 child: Center(
                   child: SingleChildScrollView(
@@ -59,7 +69,9 @@ class _LoginState extends State<Login> {
                           const SizedBox(
                             height: 24,
                           ),
+                          // login button
                           InkWell(
+                            onTap: loginUserHandler,
                             child: Container(
                               width: double.infinity,
                               alignment: Alignment.center,
@@ -73,7 +85,7 @@ class _LoginState extends State<Login> {
                             ),
                           ),
                           const SizedBox(
-                            height: 12,
+                            height: 24,
                           ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
