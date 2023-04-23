@@ -26,83 +26,82 @@ class _LoginState extends State<Login> {
     return Scaffold(
         body: SafeArea(
             child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 32),
+                padding:  const EdgeInsets.all(32),
                 width: double.infinity,
-                child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Flexible(
-                        flex: 2,
-                        child: Container(),
-                      ),
-                      SvgPicture.asset(
-                        "assets/images/instagram.svg",
-                        colorFilter: const ColorFilter.mode(
-                            primaryColor, BlendMode.srcIn),
-                        height: 64,
-                      ),
-                      const SizedBox(
-                        height: 64,
-                      ),
-                      TextFieldInput(
-                          textEditingController: _emailController,
-                          hintText: "Enter your email",
-                          textInputType: TextInputType.emailAddress),
-                      const SizedBox(
-                        height: 24,
-                      ),
-                      TextFieldInput(
-                        textEditingController: _passwordController,
-                        hintText: "Enter your password",
-                        textInputType: TextInputType.text,
-                        isPswd: true,
-                      ),
-                      const SizedBox(
-                        height: 24,
-                      ),
-                      InkWell(
-                        child: Container(
-                          width: double.infinity,
-                          alignment: Alignment.center,
-                          padding: const EdgeInsets.symmetric(vertical: 12),
-                          decoration: const ShapeDecoration(
-                              shape: RoundedRectangleBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(4))),
-                              color: blueColor),
-                          child: const Text('Log In'),
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 12,
-                      ),
-                      Flexible(
-                        flex: 2,
-                        child: Container(),
-                      ),
-                      Row(
+                child: Center(
+                  child: SingleChildScrollView(
+                    child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Container(
-                            padding: const EdgeInsets.symmetric(vertical: 8),
-                            child: const Text("Don't have an account?"),
+                          SvgPicture.asset(
+                            "assets/images/instagram.svg",
+                            colorFilter: const ColorFilter.mode(
+                                primaryColor, BlendMode.srcIn),
+                            height: 64,
                           ),
-                          GestureDetector(
-                            onTap: () => {},
+                          const SizedBox(
+                            height: 64,
+                          ),
+                          TextFieldInput(
+                              textEditingController: _emailController,
+                              hintText: "Enter your email",
+                              textInputType: TextInputType.emailAddress),
+                          const SizedBox(
+                            height: 24,
+                          ),
+                          TextFieldInput(
+                            textEditingController: _passwordController,
+                            hintText: "Enter your password",
+                            textInputType: TextInputType.text,
+                            isPswd: true,
+                          ),
+                          const SizedBox(
+                            height: 24,
+                          ),
+                          InkWell(
                             child: Container(
-                              padding: const EdgeInsets.symmetric(
-                                  vertical: 8, horizontal: 2),
-                              child: const Text(
-                                "Sign up.",
-                                style: TextStyle(fontWeight: FontWeight.bold),
-                              ),
+                              width: double.infinity,
+                              alignment: Alignment.center,
+                              padding: const EdgeInsets.symmetric(vertical: 12),
+                              decoration: const ShapeDecoration(
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius:
+                                          BorderRadius.all(Radius.circular(4))),
+                                  color: blueColor),
+                              child: const Text('Log In'),
                             ),
-                          )
-                        ],
-                      ),
-                      const SizedBox(
-                        height: 12,
-                      ),
-                    ]))));
+                          ),
+                          const SizedBox(
+                            height: 12,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Container(
+                                padding:
+                                    const EdgeInsets.symmetric(vertical: 8),
+                                child: const Text("Don't have an account?"),
+                              ),
+                              GestureDetector(
+                                onTap: () => {},
+                                child: Container(
+                                  padding: const EdgeInsets.symmetric(
+                                      vertical: 8, horizontal: 2),
+                                  child: const Text(
+                                    "Sign up.",
+                                    style:
+                                        TextStyle(fontWeight: FontWeight.bold),
+                                  ),
+                                ),
+                              )
+                            ],
+                          ),
+                          const SizedBox(
+                            height: 12,
+                          ),
+                        ]),
+                  ),
+                ))));
   }
 }
